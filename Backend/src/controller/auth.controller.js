@@ -13,7 +13,7 @@ export const authCallback=async (req,res,next)=>{
             //each user will be saved in the db once
             await User.create({
                 clerkId:id,
-                fullName: `${firstName} ${lastName}`,
+                fullName: `${firstName|| ""} ${lastName || ""}`.trim(),
                 imageUrl,
             })
         } 

@@ -132,6 +132,7 @@ const AddAlbumDialog = () => {
 					<div className='space-y-2'>
 						<label className='text-sm font-medium'>Album Title</label>
 						<Input
+							placeholder="Enter album title"
 							value={newAlbum.title}
 							onChange={(e) => setNewAlbum({ ...newAlbum, title: e.target.value })}
 							className='bg-zinc-800 border-zinc-700'
@@ -141,6 +142,7 @@ const AddAlbumDialog = () => {
 					<div className='space-y-2'>
 						<label className='text-sm font-medium'>Artist</label>
 						<Input
+							placeholder="Enter artist name"
 							value={newAlbum.artist}
 							onChange={(e) => setNewAlbum({ ...newAlbum, artist: e.target.value })}
 							className='bg-zinc-800 border-zinc-700'
@@ -150,6 +152,7 @@ const AddAlbumDialog = () => {
 					<div className='space-y-2'>
 						<label className='text-sm font-medium'>releaseYear</label>
 						<Input
+							placeholder="Enter release year"
 							type='number'
 							min='0'
 							value={newAlbum.releaseYear}

@@ -6,6 +6,8 @@ import fileUpload from "express-fileupload";
 import { fileURLToPath } from "url";
 import cors from "cors";
 import path from "path";
+import { createServer } from "http";
+import { initializeSocket } from "./lib/socket.js";
 
 import userRoutes from "./routes/user.route.js";
 import authRoutes from "./routes/auth.route.js";
@@ -13,6 +15,9 @@ import adminRoutes from "./routes/admin.route.js";
 import songsRoutes from "./routes/songs.route.js";
 import albumsRoutes from "./routes/albums.route.js";
 import statsRoutes from "./routes/stats.route.js";
+
+
+
 
 
 dotenv.config();
@@ -23,6 +28,9 @@ const PORT = process.env.PORT;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
+const httpServer =createServer(app);
+initializeSocket(httpServer);
 
 app.use(cors(
     {
@@ -57,10 +65,7 @@ app.use((err,req,res,next)=>{
 });
 
 
-app.listen(PORT,()=>{
+httpServer.listen(PORT,()=>{
     console.log("Server is running on port "+PORT);
     connectDB();
 });
-
-
-// todo socket.io
